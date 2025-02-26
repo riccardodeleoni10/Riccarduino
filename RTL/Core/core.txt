@@ -1,0 +1,5 @@
+Sono inseriti tutti i file riferiti al core processore.
+L'Architettura prevede una struttutturale che racchiude tutto l'hardware.
+A parte i segnali di controllo (clk,reset) l'ingresso principale è l'istruzione proveniente dalla RAM sintetizzata tramite Vivado. L'uscita principale è il program counter.
+Per Far funzionare il processore correttamente bisogna collegare l'uscita program counter al instruction decoder (serve per passare da memoria byte addressed a word addressed),
+collegato a sua volta all Instruction memory. L'ingresso del processore è l'uscita dell'Instruction memory

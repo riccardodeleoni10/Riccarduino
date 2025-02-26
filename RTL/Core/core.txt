@@ -7,3 +7,5 @@ Per Far funzionare il processore correttamente bisogna collegare l'uscita progra
            
         ---> | instr_mem_dec| ----> |Instr_mem (Viviado)| ---> |CPU|--
         |_____________________________________________________________|                                                          
+Obiettivi:
+- Terminati i timer (vedi periferiche), inserire logica per interrupt

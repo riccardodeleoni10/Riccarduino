@@ -9,3 +9,9 @@ Per Far funzionare il processore correttamente bisogna collegare l'uscita progra
         |_____________________________________________________________|                                                          
 Obiettivi:
 - Terminati i timer (vedi periferiche), inserire logica per interrupt
+Note sul funzionamento:
+Il processore ad oggi esegue correttamente tutte le operazioni di I,S,R,J. Le B-Type sono per ora limitate ad BEQ e BNE.
+Dopo ogni operazione che prevede il salto del program counter è bene aggiungere una NOP, così come su operazioni aritmetiche in cui è utilizzato lo stesso registro (non sempre necessario in questo caso).
+Esempio: 
+           JAL xo,loop
+           nop

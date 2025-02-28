@@ -45,9 +45,10 @@ begin
 extend_process: process(instr,EXTctrl)
 begin
     case EXTctrl is 
-        when "00" => EXTout<= (31 downto 12 => instr(24)) & instr(24 downto 13); 
-        when "01" => EXTout <= (31 downto 12 => instr(24)) & instr (24 downto 18)& instr (4 downto 0);
-        when "10" => EXTout <= (31 downto 12 => instr(24)) & instr(0) & instr (23 downto 18) & instr (4 downto 1)& '0';
+        when "00" => EXTout<= (31 downto 12 => instr(24)) & instr(24 downto 13);-- I-Type Imm
+        when "01" => EXTout <= (31 downto 12 => instr(24)) & instr (24 downto 18)& instr (4 downto 0);-- S-Type Imm
+        when "10" => EXTout <= (31 downto 12 => instr(24)) & instr(0) & instr (23 downto 18) & instr (4 downto 1)& '0';--B-Type Imm
+        when "11" => EXTout <= (31 downto 20 => instr(24)) & instr(12 downto 5) & instr(13) & instr(23 downto 14) & '0';--J-Type
         when others => EXTout <= (others => '-');
     end case;
 end process;

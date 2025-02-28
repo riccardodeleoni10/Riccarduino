@@ -63,7 +63,7 @@ component control_unit is
         OP_code: in std_logic_vector (6 downto 0);
         F3: in std_logic_vector (2 downto 0);
         F7_5,Z: in std_logic;
-        RESctrl: out std_logic;
+        RESctrl: out std_logic_vector(1 downto 0);
         ALUctrl: out std_logic_vector(3 downto 0);
         ALUsrc : out std_logic;
         EXTctrl:out std_logic_vector (1 downto 0);
@@ -161,9 +161,10 @@ component store_result_unit is
 end component store_result_unit;
 component result_mux is
       Port ( 
-            RESctrl: in std_logic;
+            RESctrl: in std_logic_vector(1 downto 0);
             DMin: in std_logic_vector (31 downto 0);
             ALUin: in std_logic_vector (31 downto 0);
+            PCin: in std_logic_vector (12 downto 0);
             Result: out std_logic_vector (31 downto 0)
       );
 end component result_mux;
@@ -178,7 +179,7 @@ signal rd2alu1, rd2alu2,ext2alu,alu2mux_res,dm2lru,lru2mux_res,sru2mapIO,res2reg
 signal pcalu2pc,pc_sig : std_logic_vector (12 downto 0);
 signal addr_dec2write : std_logic_vector (1 downto 0);
 signal z_flag: std_logic;
-signal control_bus: std_logic_vector (16 downto 0);
+signal control_bus: std_logic_vector (17 downto 0);
 begin
 
 alu_map: alu port map (
@@ -197,7 +198,8 @@ control_unit_map: control_unit port map (
     F3 => instr_mem_data (14 downto 12),
     F7_5 => instr_mem_data(30),
     z => z_flag,
-    RESctrl=>control_bus(0),
+    RESctrl(0)=>control_bus(0),
+    RESctrl(1)=> control_bus(17),
     ALUctrl(2 downto 0 )=> control_bus(3 downto 1),
     ALUctrl (3) => control_bus(14),
     ALUsrc=> control_bus(4),
@@ -270,7 +272,9 @@ SRU : store_result_unit port map (
     dout => sru2mapIO
 );
 result_mux_map: result_mux port map (
-    RESctrl => control_bus(0),
+    RESctrl(0) => control_bus(0),
+    RESctrl(1) => control_bus(17),
+    PCin => pc_sig,
     DMin => lru2mux_res,
     ALUin => alu2mux_res,
     Result => res2regfile

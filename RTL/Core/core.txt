@@ -15,4 +15,4 @@ Dopo ogni operazione che prevede il salto del program counter è bene aggiungere
 Esempio: 
            JAL xo,loop
            nop
-L'editor online per scrivere gli applicati assembly è a questo link:https://venus.kvakil.me/
+L'editor online per scrivere gli applicati assembly RISC-V è a questo link:https://venus.kvakil.me/

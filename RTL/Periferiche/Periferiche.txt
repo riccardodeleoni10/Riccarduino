@@ -2,4 +2,5 @@ In questo file sono contenuti i file inerenti alle periferiche. Per ora solo un 
 Avendo una Memory Mapped IO, ogni volta che si aggiunge una periferica bisogna modificare ed aggiornare il file Addresse_decoding
 Obiettivi:
 - Inserire anche periferiche GPIO
+- Inserire input capture per il timer
 - Rendere l'aggiunta di periferiche alla addresse_decoding più automatica tramite generic.

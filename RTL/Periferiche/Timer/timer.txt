@@ -1,4 +1,4 @@
 Periferica timer per il processore.
 Ogni timer ha due registri di controllo a 32 bit:
 reg1 => (31:16)<= oc2, (15:0)<= oc1
-reg2 => (15:8)<= registro utile per inserire eventuali modalità, per adesso è attivo solo il bit4 per abilitare l'interrupt flag su oc1.(7:0) controllo dei prescaler con 7 modalità diverse (da 0 a 6); sono riservati 4 bit per rendere il tutto più facile da indirizzare
+reg2 => (15:8)<= registro utile per inserire eventuali modalità, per adesso è attivo solo il bit4 per abilitare l'interrupt flag su oc1.(7:0) controllo dei prescaler con 7 modalità diverse (da 0 a 6); sono riservati 8 bit per rendere il tutto più facile da indirizzare
